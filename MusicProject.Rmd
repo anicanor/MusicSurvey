@@ -10,8 +10,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Music Project
 
-#Creating the Person and FavoriteSong Tables
+#Initializing
 ```{r}
+library("tidyverse")
 Person <- read.csv(file="music-survey.csv", header=TRUE, sep=",")
 FavoriteSong <- read.csv(file="preferences-survey.csv", header=TRUE, sep=",")
 ```
@@ -43,4 +44,11 @@ levels(Person$academic_major)[levels(Person$academic_major)=="Computer informati
 ```{r}
 Rating <- gather(FavoriteSong, "artists", "rating", 3:45)
 Rating <- subset(Rating, select = -c(Timestamp))
+```
+
+#Displaying Tables
+```{r}
+head(Person)
+head(FavoriteSong)
+head(Rating)
 ```

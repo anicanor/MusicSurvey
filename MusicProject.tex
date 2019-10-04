@@ -1,0 +1,408 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={MusicProject},
+            pdfauthor={Aaron Nicanor},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{MusicProject}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Aaron Nicanor}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+    \date{}
+    \predate{}\postdate{}
+  
+
+\begin{document}
+\maketitle
+
+\hypertarget{music-project}{%
+\subsection{Music Project}\label{music-project}}
+
+\#Initializing
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------------------------------------------------------- tidyverse 1.2.1 --
+\end{verbatim}
+
+\begin{verbatim}
+## v ggplot2 3.2.1     v purrr   0.3.2
+## v tibble  2.1.3     v dplyr   0.8.3
+## v tidyr   1.0.0     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.4.0
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------------------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Person <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\DataTypeTok{file=}\StringTok{"music-survey.csv"}\NormalTok{, }\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{sep=}\StringTok{","}\NormalTok{)}
+\NormalTok{FavoriteSong <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\DataTypeTok{file=}\StringTok{"preferences-survey.csv"}\NormalTok{, }\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{sep=}\StringTok{","}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\#Rename Col Names
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{colnames}\NormalTok{(Person)[}\KeywordTok{colnames}\NormalTok{(Person)}\OperatorTok{==}\StringTok{"Timestamp"}\NormalTok{] <-}\StringTok{ "time_submitted"}
+\KeywordTok{colnames}\NormalTok{(Person)[}\KeywordTok{colnames}\NormalTok{(Person)}\OperatorTok{==}\StringTok{"First..we.are.going.to.create.a.pseudonym.for.you.to.keep.this.survey.anonymous..more.or.less...Which.pseudonym.generator.would.you.prefer."}\NormalTok{] <-}\StringTok{ "pseudonym_generator"}
+\KeywordTok{colnames}\NormalTok{(Person)[}\KeywordTok{colnames}\NormalTok{(Person)}\OperatorTok{==}\StringTok{"What.is.your.pseudonym."}\NormalTok{] <-}\StringTok{ "pseudonym"}
+\KeywordTok{colnames}\NormalTok{(Person)[}\KeywordTok{colnames}\NormalTok{(Person)}\OperatorTok{==}\StringTok{"Sex"}\NormalTok{] <-}\StringTok{ "sex"}
+\KeywordTok{colnames}\NormalTok{(Person)[}\KeywordTok{colnames}\NormalTok{(Person)}\OperatorTok{==}\StringTok{"Major"}\NormalTok{] <-}\StringTok{ "academic_major"}
+\KeywordTok{colnames}\NormalTok{(Person)[}\KeywordTok{colnames}\NormalTok{(Person)}\OperatorTok{==}\StringTok{"Academic.Year"}\NormalTok{] <-}\StringTok{ "academic_level"}
+\KeywordTok{colnames}\NormalTok{(Person)[}\KeywordTok{colnames}\NormalTok{(Person)}\OperatorTok{==}\StringTok{"Year.you.were.born..YYYY."}\NormalTok{] <-}\StringTok{ "year_born"}
+\KeywordTok{colnames}\NormalTok{(Person)[}\KeywordTok{colnames}\NormalTok{(Person)}\OperatorTok{==}\StringTok{"Which.musical.instruments.talents.do.you.play...Select.all.that.apply."}\NormalTok{] <-}\StringTok{ "instrument_list"}
+\KeywordTok{colnames}\NormalTok{(Person)[}\KeywordTok{colnames}\NormalTok{(Person)}\OperatorTok{==}\StringTok{"Artist"}\NormalTok{] <-}\StringTok{ "favorite_song_artist"}
+\KeywordTok{colnames}\NormalTok{(Person)[}\KeywordTok{colnames}\NormalTok{(Person)}\OperatorTok{==}\StringTok{"Song"}\NormalTok{] <-}\StringTok{ "favorite_song"}
+\KeywordTok{colnames}\NormalTok{(Person)[}\KeywordTok{colnames}\NormalTok{(Person)}\OperatorTok{==}\StringTok{"Link.to.song..on.Youtube.or.Vimeo."}\NormalTok{] <-}\StringTok{ "favorite_song_link"}
+
+\KeywordTok{names}\NormalTok{(FavoriteSong) <-}\StringTok{ }\KeywordTok{gsub}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{names}\NormalTok{(FavoriteSong), }\DataTypeTok{pattern =} \StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{."}\NormalTok{, }\DataTypeTok{replacement =} \StringTok{" "}\NormalTok{)}
+\KeywordTok{colnames}\NormalTok{(FavoriteSong)[}\KeywordTok{colnames}\NormalTok{(FavoriteSong)}\OperatorTok{==}\StringTok{"What was your pseudonym "}\NormalTok{] <-}\StringTok{ "pseudonym"}
+\end{Highlighting}
+\end{Shaded}
+
+\#Cleaning Data
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{levels}\NormalTok{(Person}\OperatorTok{$}\NormalTok{academic_major)[}\KeywordTok{levels}\NormalTok{(Person}\OperatorTok{$}\NormalTok{academic_major)}\OperatorTok{==}\StringTok{"Computer information systems"}\NormalTok{]<-}\StringTok{"Computer Information Systems"}
+\end{Highlighting}
+\end{Shaded}
+
+\#Creating the Ratings Table
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Rating <-}\StringTok{ }\KeywordTok{gather}\NormalTok{(FavoriteSong, }\StringTok{"artists"}\NormalTok{, }\StringTok{"rating"}\NormalTok{, }\DecValTok{3}\OperatorTok{:}\DecValTok{45}\NormalTok{)}
+\NormalTok{Rating <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(Rating, }\DataTypeTok{select =} \OperatorTok{-}\KeywordTok{c}\NormalTok{(Timestamp))}
+\end{Highlighting}
+\end{Shaded}
+
+\#Displaying Tables
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(Person)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   time_submitted        pseudonym_generator        pseudonym  sex
+## 1  8/27/19 20:22 Fake rapper name generator Lord Los Angeles Male
+## 2  8/29/19 12:15   Fake band name generator       Heroes War Male
+## 3  8/28/19 19:33   Fake band name generator      Puppets War Male
+## 4  8/29/19 16:25   Fake band name generator       West Magic Male
+## 5  8/27/19 15:40   Fake band name generator      Eller Angel Male
+## 6  8/27/19 22:59   Fake band name generator    Trace Stripes Male
+##     academic_major academic_level year_born          instrument_list
+## 1 Computer Science         Senior      1994                      Rap
+## 2 Computer Science         Junior      1997                   Guitar
+## 3             Math         Senior      1996                   Guitar
+## 4 Computer Science         Junior      1999                  Trumpet
+## 5 Computer Science         Senior      1998 Piano/Keyboards, Ukulele
+## 6 Computer Science         Senior      1986                         
+##                        favorite_song_artist         favorite_song
+## 1                                   40 crew            Not Enough
+## 2                            Arctic Monkeys              Arabella
+## 3                                    Avatar  The Eagle Has Landed
+## 4                                 Ben Folds                 Still
+## 5                                 blink-182 She's Out Of Her Mind
+## 6 brian jonestown massacre / sarabeth tucek                  Seer
+##                            favorite_song_link
+## 1 https://www.youtube.com/watch?v=uITuGZKljgQ
+## 2 https://www.youtube.com/watch?v=Jn6-TItCazo
+## 3 https://www.youtube.com/watch?v=4p6GWewmTYQ
+## 4 https://www.youtube.com/watch?v=ShBzUK4rnI8
+## 5 https://www.youtube.com/watch?v=krpm0v_486k
+## 6                https://youtu.be/C-XT7DZsNP8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(FavoriteSong)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Timestamp        pseudonym X40 crew Not Enough
+## 1 9/2/19 23:51    Baddest Burke                   3
+## 2 9/3/19 12:38     Shooter Bank                   4
+## 3 9/3/19 15:36 Prophet Paradise                   4
+## 4 9/3/19 18:58      Smooth Yuba                   8
+## 5 9/3/19 19:16          Silence                   3
+## 6 9/3/19 21:27      West Garden                   4
+##   Arctic Monkeys Arabella Avatar The Eagle Has Landed Ben Folds Still
+## 1                       7                           6               4
+## 2                       6                           5               3
+## 3                       8                           9               8
+## 4                       5                           2               3
+## 5                       5                           4               5
+## 6                       5                           3               6
+##   blink 182 She s Out Of Her Mind
+## 1                               5
+## 2                               1
+## 3                               8
+## 4                               4
+## 5                               8
+## 6                               4
+##   brian jonestown massacre   sarabeth tucek Seer BROCKHAMPTON NO HALO
+## 1                                              6                    4
+## 2                                              7                    6
+## 3                                              7                    4
+## 4                                              5                   10
+## 5                                              5                    3
+## 6                                              3                    5
+##   Brother Ali Can t Take That Away Daboii Beat in a Chokehold
+## 1                               10                          3
+## 2                                4                          3
+## 3                                3                          1
+## 4                                7                          3
+## 5                                4                          3
+## 6                                4                          3
+##   Daniel Caesar Open Up De La Soul Patty Dooke Dead Kennedys Kill The Poor
+## 1                     6                      7                           5
+## 2                     9                      6                           8
+## 3                     2                      6                          10
+## 4                     8                      2                           2
+## 5                     2                      2                           1
+## 6                     4                      5                           3
+##   Dominic Fike 3 Nights Gorillaz Any but here is Humility
+## 1                     5                                 5
+## 2                     8                                 6
+## 3                     2                                 9
+## 4                     7                                 9
+## 5                     4                                 7
+## 6                     5                                 5
+##   Dream Theater A Change of Seasons Ed Sheeran Dive
+## 1                                 5               7
+## 2                                 6               3
+## 3                                 9               3
+## 4                                 5               7
+## 5                                 3               7
+## 6                                 4               8
+##   General Levy Incredible  Remix  Hiroyuki Sawano S ave
+## 1                               2                     3
+## 2                               4                     9
+## 3                               1                     6
+## 4                               4                     4
+## 5                               2                     4
+## 6                               5                     9
+##   Jai Paul Do You Love Her Now Johnny Cash We ll Meet Again
+## 1                            6                            8
+## 2                           10                           10
+## 3                            2                           10
+## 4                            4                            3
+## 5                            4                            2
+## 6                            5                            6
+##   Kane Brown What s Mine is Yours Kim Petras I dont want it at all
+## 1                               2                                2
+## 2                               4                                1
+## 3                               4                                2
+## 4                               6                                5
+## 5                               8                                9
+## 6                               6                                5
+##   Led Zeppelin Hey Hey What Can I Do Marshmello One Thing Right
+## 1                                 10                          2
+## 2                                  9                          4
+## 3                                 10                          1
+## 4                                  5                          6
+## 5                                  7                          7
+## 6                                  5                          6
+##   Matisyahu One Day MF DOOM Potholderz mozzy bladadah Oliver Tree Hurt
+## 1                 8                  7              6                6
+## 2                10                  9              5                5
+## 3                 6                  6              1                3
+## 4                 6                  5              4               10
+## 5                 4                  3              4                7
+## 6                 6                  4              3                5
+##   Radiohead weird fishes arpeggi Rainbow Kitten Surprise Cocaine Jesus
+## 1                              6                                     6
+## 2                              5                                     8
+## 3                              9                                     6
+## 4                              7                                     3
+## 5                              6                                     4
+## 6                              4                                     4
+##   Rick Astley Never Going to Give You Up Sia Elastic Heart
+## 1                                      5                 5
+## 2                                     10                 9
+## 3                                     10                 6
+## 4                                     10                 6
+## 5                                      6                 7
+## 6                                      7                 5
+##   Sixtoo Jackals and Vipers in Envy of Man  Album  Snakehips Either Way
+## 1                                                4                    6
+## 2                                               10                    6
+## 3                                                1                    4
+## 4                                                4                    6
+## 5                                                2                    6
+## 6                                                4                    4
+##   Sufjan Stevens Should Have Known Better Tame Impala Patience
+## 1                                       6                    5
+## 2                                      10                    8
+## 3                                       4                    8
+## 4                                       5                    8
+## 5                                       5                    5
+## 6                                       4                    5
+##   The Black Keys Unknown Brother The Byrds Mr  Spaceman Tool Fear Inoculum
+## 1                              7                      7                  8
+## 2                              9                      8                  8
+## 3                              8                      7                 10
+## 4                              7                      6                  3
+## 5                              6                      6                  4
+## 6                              5                      5                  4
+##   Traffic Dear Mr  Fantasy Travis Scott Astrothunder
+## 1                        7                         2
+## 2                        9                         6
+## 3                        4                         3
+## 4                        6                        10
+## 5                        4                         3
+## 6                        5                         4
+##   Virtual Self Angel Voices Wheezer Buddy Holly
+## 1                         1                   8
+## 2                         4                   6
+## 3                         4                   9
+## 4                         2                  10
+## 5                         5                   7
+## 6                         6                   5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(Rating)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          pseudonym             artists rating
+## 1    Baddest Burke X40 crew Not Enough      3
+## 2     Shooter Bank X40 crew Not Enough      4
+## 3 Prophet Paradise X40 crew Not Enough      4
+## 4      Smooth Yuba X40 crew Not Enough      8
+## 5          Silence X40 crew Not Enough      3
+## 6      West Garden X40 crew Not Enough      4
+\end{verbatim}
+
+
+\end{document}
