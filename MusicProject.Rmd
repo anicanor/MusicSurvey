@@ -1,0 +1,49 @@
+---
+author: Aaron Nicanor
+title: "MusicProject"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Music Project
+
+```{r}
+Person <- read.csv(file="music-survey.csv", header=TRUE, sep=",")
+FavoriteSong <- read.csv(file="preferences-survey.csv", header=TRUE, sep=",")
+```
+
+#Rename Col Names
+```{r}
+colnames(Person)[colnames(Person)=="Timestamp"] <- "time_submitted"
+colnames(Person)[colnames(Person)=="First..we.are.going.to.create.a.pseudonym.for.you.to.keep.this.survey.anonymous..more.or.less...Which.pseudonym.generator.would.you.prefer."] <- "pseudonym_generator"
+colnames(Person)[colnames(Person)=="What.is.your.pseudonym."] <- "pseudonym"
+colnames(Person)[colnames(Person)=="Sex"] <- "sex"
+colnames(Person)[colnames(Person)=="Major"] <- "academic_major"
+colnames(Person)[colnames(Person)=="Academic.Year"] <- "academic_level"
+colnames(Person)[colnames(Person)=="Year.you.were.born..YYYY."] <- "year_born"
+colnames(Person)[colnames(Person)=="Which.musical.instruments.talents.do.you.play...Select.all.that.apply."] <- "instrument_list"
+colnames(Person)[colnames(Person)=="Artist"] <- "favorite_song_artist"
+colnames(Person)[colnames(Person)=="Song"] <- "favorite_song"
+colnames(Person)[colnames(Person)=="Link.to.song..on.Youtube.or.Vimeo."] <- "favorite_song_link"
+
+names(FavoriteSong) <- gsub(x = names(FavoriteSong), pattern = "\\.", replacement = " ")
+colnames(FavoriteSong)[colnames(FavoriteSong)=="What was your pseudonym "] <- "pseudonym"
+```
+
+#Cleaning Data
+```{r}
+levels(Person$academic_major)[levels(Person$academic_major)=="Computer information systems"]<-"Computer Information Systems"
+```
+
+```{r}
+Rating <- gather(FavoriteSong, "artists", "rating", 3:45)
+Rating <- subset(Rating, select = -c(Timestamp))
+```
+
+```{r}
+library("readr")
+parse_datetime(Person$Timestamp, format="%m%d%%y %H:%M%S")
+```
